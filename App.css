@@ -1,0 +1,22 @@
+.socials a{
+    margin-left: 25px;
+    scale: 1.2;
+    color: rgb(23, 23, 73);
+}
+
+.contacts p{
+    padding-left: 10px ;
+}
+
+#leftSide::before{
+    content: '';
+    background-color: rgba(21, 21, 46, 0.7);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+#SlidesBtnTransition:hover{
+    scale: 1.3; transition:step-start ;
+    transition: 0.7s;
+}
