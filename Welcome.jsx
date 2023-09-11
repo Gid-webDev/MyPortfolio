@@ -6,8 +6,8 @@ const Welcome = () => {
 
 
     const WelcomeOverlay = {width:'100%', height:'100%', position:'absolute',
-     backgroundColor:'rgba(21, 21, 46, 0.4)', top:'0', zIndex:'6', transition:'0.9s',
-     backdropFilter:' blur(7px)', 
+     backgroundColor:'rgba(21, 21, 46, 0.5)', top:'0', zIndex:'6', transition:'0.9s',
+     WebkitBackdropFilter:'blur(10px)', backdropFilter:' blur(10px)', 
     }
     const WelcomeContainer = {height:'100vh', display:'grid', placeItems:'center', 
     textAlign:'center',
@@ -17,7 +17,7 @@ const Welcome = () => {
       position:'relative',
   }
   const ProfileOverlay = {
-    backgroundColor:' rgba(21, 21, 46, 0.3)', position:'absolute', height:'100%', 
+    backgroundColor:' rgba(21, 21, 46, 0.5)', position:'absolute', height:'100%', 
     width:'100%', zIndex:'1', top:'0', left:'0', display:'none'
 }
   const NameContainer = {
@@ -50,7 +50,7 @@ const Btn = {
        <div className='' style={WelcomeContainer}>
        <figure style={ProfileOverlay}></figure>
         <section className='cardContainer row g-0' style={{maxWidth:'800px', maxHeight:'70vh', borderRadius:'20px', scale:'0.8', top:'-40px', position:'relative'}}>
-        <div className='col-sm-4' style={{scale:''}}>
+        <div className='col-sm-4' style={{scale:'', }}>
          <img style={ProfilePix}
          src={('gid.jpg')} alt=''/>
         </div>
