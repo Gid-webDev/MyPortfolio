@@ -1,6 +1,6 @@
 import React from 'react'
 import {ImLocation2} from 'react-icons/im';
-import NavContainer from './components/navContainer';
+import NavContainer from './components/NavContainer';
 import {BsFillTelephoneInboundFill, BsWhatsapp} from 'react-icons/bs';
 import {FaReact, FaFigma, FaBootstrap, FaHtml5, FaCss3} from 'react-icons/fa'
 import {DiJavascript1} from 'react-icons/di';
@@ -25,7 +25,7 @@ const SideRight = () => {
     <span className='text-warning'>
     <SiRedux/> 
     </span> 
-    <p> Redux</p>
+    <p> Redux & Restful Api</p>
     </div>
 
     <div className='d-flex contacts'> 
@@ -86,13 +86,6 @@ const SideRight = () => {
      <ImLocation2/> 
      </span > 
      <p>27 Francis Opute Crescent, Greenfeild estate, Lagos NG.</p>
-     </div>
-
-     <div className='d-flex contacts'> 
-     <span className='text-warning'>
-     <BsFillTelephoneInboundFill/> 
-     </span> 
-     <p> +2347031523139, +233554110784</p>
      </div>
 
      <div className='d-flex contacts'> 

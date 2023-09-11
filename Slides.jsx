@@ -7,21 +7,29 @@ const Slides = ({}) => {
   
     const myImages = [
       {  "id": 1,
-          "image": "portfolioPic/weatherApp.png"}, 
+         "link": "https://kingweather.netlify.app/",
+          "image": "portfolioPic/weatherApp.png"
+        },  
       {  "id": 2,
-          "image": "portfolioPic/weatheNewYork.png"}, 
+         "link": "https://moviesblocks.netlify.app/",
+          "image": "portfolioPic/portfolioPage.png"
+        },
       {  "id": 3,
-          "image": "portfolioPic/movieblocksTab.png"},
+         "link": "https://moviesblocks.netlify.app/",
+          "image": "portfolioPic/movieBlockPhone.png"
+        }, 
       {  "id": 4,
-          "image": "portfolioPic/movieBlockPhone.png"}, 
-      {  "id": 5,
-          "image": "portfolioPic/moviesLightmode.png"},
+         "link": "https://moviesblocks.netlify.app/",
+          "image": "portfolioPic/movieIpad.png"
+        }, 
+        {  "id": 5,
+         "link": "https://kingweather.netlify.app/",
+          "image": "portfolioPic/weatheNewYork.png"
+        },
       {  "id": 6,
-          "image": "portfolioPic/movieblocksPc.png"}, 
-      {  "id": 7,
-          "image": "portfolioPic/lightmodePc.png"},
-      {  "id": 8,
-          "image": "portfolioPic/bootstrapStyleTablet.png"}    
+         "link": "https://webdev-pro.netlify.app/",
+          "image": "portfolioPic/Business.png"
+        }    
      ]  
   
 
@@ -41,26 +49,23 @@ const Slides = ({}) => {
       return () => clearTimeout(timeRef.current)
     })
 
-    const SlideContainer = {padding:'0px 10px', width:'100%', height:'100%',}
+    const SlideContainer = {maxwidth:'100%', height:'100%',}
 
     const SlidesStyles = {width:'100%', height:'100%', borderRadius:'10px',
     color:'white', position:'relative', backgroundRepeat:'no-repeat', backgroundPosition:'center',
-    transition:'1.5s',
+    transition:'1.5s', scale:'0.85',
     backgroundImage: `url(${images[currentSlide].image})`
-  }
-  const SlidesBtnLeft = {position:'absolute', color:'white', top:'50%', fontWeight:'100', 
-  zIndex:'5', left:'5px', cursor:'pointer', backgroundColor:'rgba(0, 0, 0, 0.8)',
-  width:'50px', height:'30px ', padding:'3px', borderRadius:'5px' }
-  
-  const SlidesBtnRight = {position:'absolute', color:'white', top:'50%', fontWeight:'100', 
-  zIndex:'5',  right:'30px', cursor:'pointer', backgroundColor:'rgba(0, 0, 0, 0.8)',
-  width:'50px', height:'30px ', padding:'3px', borderRadius:'5px'}
-
-  const DotContainer = {position:'absolute', bottom:'50px', display:'flex', 
+  } 
+  const SlidesBtn = {position:'absolute', color:'white', top:'50%', fontWeight:'100', 
+  zIndex:'5', cursor:'pointer', backgroundColor:'rgba(0, 0, 0, 0.8)',
+  width:'50px', height:'30px ', padding:'3px', borderRadius:'5px'
+}
+  const DotContainer = {position:'absolute', bottom:'30px', display:'flex', 
   position:'relative', justifyContent:'center', alignItems:'center',}
   const DotStyle = {height:'20px', width:'20px', borderRadius:'50%', 
-  display:'flex', color:'rgba(255, 255, 255, 0.6)', margin:'0 5px', cursor:'pointer',
-  scale:'0.9', backgroundColor:' #bbb' }
+  display:'flex', color:'', margin:'0 5px', cursor:'pointer',
+  scale:'0.9', backgroundColor:' #ddd',
+  }
   
   const ToPrev = () =>{
     const FirstSlide = currentSlide === 0;
@@ -73,25 +78,25 @@ const Slides = ({}) => {
     setCurrentSlide(NewIndex);
   }
 
-  const GoToImage = (image) => {
-    setCurrentSlide(image)
+  const GoToImage = (index) => {
+    setCurrentSlide(index)
   }
   
    return (
     <> 
       <div id='slidesContainer' style={SlideContainer}>
       {/* Previous */}
-      <BsChevronLeft style={SlidesBtnLeft} onClick={ToPrev} id='SlidesBtnTransition'/>
+      <BsChevronLeft style={{...SlidesBtn, left:'8px'}} onClick={ToPrev} id='SlidesBtnTransition'/>
       {/* Next */}
-      <BsChevronRight style={SlidesBtnRight} onClick={ToNext} id='SlidesBtnTransition'/>
+      <BsChevronRight style={{...SlidesBtn, right:'8px'}} onClick={ToNext} id='SlidesBtnTransition'/>
       {/* slides */}
        <div style={SlidesStyles} >
         
        </div>
        {/* dots */}
        <div style={DotContainer}>
-        {images.map((image)=> (<div key={image.id}  style={DotStyle}
-          onClick={()=> GoToImage(image.id)}></div>))}
+        {images.map((image, index)=> (<div key={image.id}  style={DotStyle}
+          onClick={()=> GoToImage(index)}></div>))}
        </div>
       
       </div>
