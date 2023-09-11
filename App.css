@@ -1,9 +1,6 @@
-.socials a{
-    margin-left: 25px;
-    scale: 1.2;
-    color: rgb(23, 23, 73);
+.head{
+    top: 500px;
 }
-
 .contacts p{
     padding-left: 10px ;
 }
@@ -17,6 +14,6 @@
 }
 
 #SlidesBtnTransition:hover{
-    scale: 1.3; transition:step-start ;
+    scale: 1.2;
     transition: 0.7s;
 }
