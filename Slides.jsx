@@ -44,12 +44,12 @@ const Slides = ({}) => {
       }
       timeRef.current = setTimeout(()=>{
         ToNext();
-      }, 4000)
+      }, 5000)
 
       return () => clearTimeout(timeRef.current)
     })
 
-    const SlideContainer = {maxwidth:'100%', height:'100%',}
+    const SlideContainer = {maxwidth:'100%', height:'100vh',}
 
     const SlidesStyles = {width:'100%', height:'100%', borderRadius:'10px',
     color:'white', position:'relative', backgroundRepeat:'no-repeat', backgroundPosition:'center',
@@ -60,11 +60,14 @@ const Slides = ({}) => {
   zIndex:'5', cursor:'pointer', backgroundColor:'rgba(0, 0, 0, 0.8)',
   width:'50px', height:'30px ', padding:'3px', borderRadius:'5px'
 }
-  const DotContainer = {position:'absolute', bottom:'30px', display:'flex', 
-  position:'relative', justifyContent:'center', alignItems:'center',}
-  const DotStyle = {height:'20px', width:'20px', borderRadius:'50%', 
-  display:'flex', color:'', margin:'0 5px', cursor:'pointer',
-  scale:'0.9', backgroundColor:' #ddd',
+  const DotContainer = {
+    position:'absolute', bottom:'40px', display:'flex', 
+  position:'relative', justifyContent:'center', alignItems:'center',
+}
+  const DotStyle = {
+    height:'20px', width:'20px', borderRadius:'50%', display:'flex', 
+    color:'', margin:'0 8px', cursor:'pointer', scale:'1.2', 
+    backgroundColor:' #ddd',
   }
   
   const ToPrev = () =>{
@@ -95,7 +98,7 @@ const Slides = ({}) => {
        </div>
        {/* dots */}
        <div style={DotContainer}>
-        {images.map((image, index)=> (<div key={image.id}  style={DotStyle}
+        {images.map((image, index)=> (<div key={image.id}  style={DotStyle} id='DotStyle'
           onClick={()=> GoToImage(index)}></div>))}
        </div>
       

@@ -10,6 +10,7 @@ import Slides from './components/Slides';
 import ProfileDp from './components/ProfileDp';
 import { useEffect, useState } from 'react';
 import Welcome from './components/Welcome';
+import Projects from './components/Projects';
 
 
 function App() {
@@ -17,15 +18,22 @@ function App() {
   const codesIMG = {"type":"codes.jpg"}
 
   
+
+  const HeaderContainer = {
+    position:'relative', zIndex:'8', backgroundColor:'rgba(255, 255, 255, 0.5)', width:'100%', 
+    WebkitBackdropFilter:'blur(5px)', backdropFilter:'blur(7px)', top:'0' 
+}  
   const MainStyle = {
-    backgroundColor:'rgb(21, 21, 46)',
+    backgroundColor:'', width:'100%', height:'100%', width:'100%', position:'relative', 
+    top:'50px', padding:'5px 0'
   }
   const RightStyle = {
-    backgroundColor:'rgb(21, 21, 46)', height:'100vh', overflowY:'auto',
+    backgroundColor:'', height:'100vh', overflowY:'hidden',
+    position:'relative', position:'relative',
   }
-  const leftContainerStyle = {}
+  const leftContainerStyle = {height:'100vh',}
   const leftSideStyle = { 
-    position:'relative', width:'100%', height:'100vh',backgroundSize:'cover', 
+    position:'relative', width:'100%', height:'100%',backgroundSize:'cover', 
     backgroundPosition:'center',  backgroundImage:`url(${codesIMG.type})`,
     }
   
@@ -37,27 +45,34 @@ function App() {
   return (
     <>
     
-    <div className='g-0 pt-2 position-relative'>
+    <div className='g-0  position-relative'>
     
      <div>
       {/* welcome page positioned absolute from welcome component */}
      <Welcome/>
      </div>
     {/*header area */}
-    <section id='header' style={{position:'relative', }}> 
+    <section className='position-fixed' id='header' style={HeaderContainer}> 
     <NavContainer setShowDp={setShowDp}/> 
     <ProfileDp showDp={showDp}/>     
     </section>
 
     {/*main body section which is divided into two sub sections "Right and Left"*/}
     <section onClick={()=> setShowDp(false)} className='row g-0 my-1' style={MainStyle}>
-    <div /* Left section*/  className='col-lg-8 col-sm-7 h1' style={leftContainerStyle}>
+    <div /* Left section*/  className='col-lg-8 col-md-7' style={leftContainerStyle}>
      <div id='leftSide' style={leftSideStyle}>
       <Slides/>
+       {/* Projects */}
+      <div style={{position:'relative', zIndex:'6', width:'100%'}}>
+        <div className='ProjectCards'>
+        <Projects/>
+        </div>
+      </div>
+
      </div>
      </div>
 
-     <div id='rightContainer' className='col-lg-4 col-sm-5 py-3 px-3 text-light' style={RightStyle}>
+     <div className='col-lg-4 col-md-5 text-light d-none d-md-block' style={RightStyle}>
         <SideRight/>
      </div>
     </section> 
