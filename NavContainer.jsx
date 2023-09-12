@@ -7,6 +7,9 @@ import {ImLocation2} from 'react-icons/im';
 
 const NavContainer = ({setShowDp}) => {
     
+  const NavStyle = {
+    display:'flex', justifyContent:'space-between', alignItems:'center',
+ }
   const socialStyle = {
     display: 'flex', justifyContent:'flex-end'
   }
@@ -16,8 +19,8 @@ const NavContainer = ({setShowDp}) => {
   return (
     <div>
 
-    <nav className="container" 
-    style={{display:'flex', justifyContent:'space-between', alignItems:'center',}}>
+    <nav className="container py-2" 
+    style={NavStyle}>
       {/*Brand image*/}
     <div className='bg-dark'style={{width:'42px', height:'42px', borderRadius:'50%', cursor:'pointer'}}>
       <img src={('dp.JPG')} alt='displayPic' className='img-fluid w-100 h-100 rounded-circle'
