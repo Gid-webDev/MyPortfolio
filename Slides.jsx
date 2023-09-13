@@ -49,9 +49,9 @@ const Slides = ({}) => {
       return () => clearTimeout(timeRef.current)
     })
 
-    const SlideContainer = {maxwidth:'100%', height:'100vh',}
+    const SlideContainer = {maxwidth:'100%', height:'100%',}
 
-    const SlidesStyles = {width:'100%', height:'100%', borderRadius:'10px',
+    const SlidesStyles = {width:'100%', height:'100vh', borderRadius:'10px',
     color:'white', position:'relative', backgroundRepeat:'no-repeat', backgroundPosition:'center',
     transition:'1.5s', scale:'0.85',
     backgroundImage: `url(${images[currentSlide].image})`
@@ -93,9 +93,7 @@ const Slides = ({}) => {
       {/* Next */}
       <BsChevronRight style={{...SlidesBtn, right:'8px'}} onClick={ToNext} id='SlidesBtnTransition'/>
       {/* slides */}
-       <div style={SlidesStyles} >
-        
-       </div>
+       <div style={SlidesStyles} > </div>
        {/* dots */}
        <div style={DotContainer}>
         {images.map((image, index)=> (<div key={image.id}  style={DotStyle} id='DotStyle'

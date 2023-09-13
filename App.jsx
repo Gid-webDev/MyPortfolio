@@ -44,13 +44,13 @@ function App() {
 
   return (
     <>
-    
+    <div>
+    {/* welcome page positioned absolute from welcome component */}
+    <Welcome/>
+   </div>
+
     <div className='g-0  position-relative'>
-    
-     <div>
-      {/* welcome page positioned absolute from welcome component */}
-     <Welcome/>
-     </div>
+  
     {/*header area */}
     <section className='position-fixed' id='header' style={HeaderContainer}> 
     <NavContainer setShowDp={setShowDp}/> 
@@ -68,10 +68,8 @@ function App() {
         <Projects/>
         </div>
       </div>
-
      </div>
      </div>
-
      <div className='col-lg-4 col-md-5 text-light d-none d-md-block' style={RightStyle}>
         <SideRight/>
      </div>
