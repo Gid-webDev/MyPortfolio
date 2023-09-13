@@ -3,7 +3,7 @@ import React from 'react'
 const ProjectCard = ({project}) => {
 
   const CardContainer = 
-  {scale:'0.9', borderRadius:'25px', padding:'0 0 10px 0', boxShadow:'0.8px 2px 3px 3px rgba(0, 0, 0, 0.3)',
+  {scale:'0.9', borderRadius:'25px', padding:'0 0 10px 0', boxShadow:'2px 2px 3px 2px rgba(0, 0, 0, 0.3)',
   backgroundColor:'#fff', color:' rgba(21, 21, 46, 1)'
 }
   const cardsStyle = {
