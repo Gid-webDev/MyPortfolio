@@ -6,16 +6,16 @@ const Welcome = () => {
 
 
     const WelcomeOverlay = {left:'0',width:'100%', height:'100%', position:'absolute',
-     backgroundColor:'rgba(0, 0, 0, 0.3)', top:'0', zIndex:'10', 
-     WebkitBackdropFilter:'blur(8px)', backdropFilter:' blur(8px)',
-     justifyContent:'center', display:'flex', 
+     backgroundColor:'rgba(0, 0, 0, 0.3)', top:'0', zIndex:'10', display:'flex',
+     WebkitBackdropFilter:'blur(8px)', backdropFilter:' blur(12px)',
+     justifyContent:'center', transition:'1s'
     }
-    const WelcomeContainer = {height:'100vh', textAlign:'center', 
-    maxWidth:'700px', scale:'0.8', top:'5%', position:'relative'
+    const WelcomeContainer = {height:'100vh', textAlign:'center', scale:'0.8',
+    maxWidth:'700px',  top:'5%', position:'relative', transition:'1s'
   
     }
     const ProfilePix = {
-      borderRadius:'50% ', width:'100%', height:'100%', boxShadow:'7px 8px rgb(255, 255, 255, 0.25)',
+      borderRadius:'50% ', width:'100%', height:'100%',
       position:'relative',
   }
   const ProfileOverlay = {
@@ -24,8 +24,8 @@ const Welcome = () => {
 }
   const CardContainer = {
     width:'100%', height:'', borderRadius:'20px', scale:'',
-     position:'relative',backgroundColor:'rgba(21, 21, 46, 0.8)',
-     boxShadow:'2px 2px 8px 1px rgba(255, 255, 255, 0.5'
+     position:'relative',backgroundColor:'transparent',
+     boxShadow:' 8px 3px rgba(255, 255, 255, 0.15)',
    }
    const ImgStyle = { 
     maxHeight:'260px', maxWidth:'260px',
@@ -35,7 +35,7 @@ const Welcome = () => {
     zIndex:'10', top:'0', maxHidth:'400px', maxHeight:'400px'
   }
   const Names = {
-    fontSize:'38px', fontWeight:'700', textShadow:'3px 3px rgba(255, 255 255, 1)',
+    fontSize:'33px', fontWeight:'700', textShadow:'3px 3px rgba(255, 255 255, 1)',
   }
   const Title = {
     fontSize:'28px', fontWeight:'100'
@@ -47,7 +47,7 @@ const Welcome = () => {
     fontSize:'18px', color:'#ddd'
 }
 const Btn = {
-  width:'', padding:'10px 14px', fontSize:'20px', color:'rgb(21, 21, 46)',
+  width:'', padding:'12px 14px', fontSize:'20px', fontWeight:'600', color:'rgb(21, 21, 46)',
   backgroundColor:'#fff', border:'none', borderRadius:'5px', position:'relative',
   display:'flex', alignItems:'center', justifyContent:'space-between', zIndex:'10'
 }
@@ -85,8 +85,8 @@ const Btn = {
           
           <button style={Btn} 
            onClick={() => setWelcome(false)}>
-           Continue to Page 
-           <BiChevronsRight style={{fontSize:'20px',}}/>
+           View Projects 
+           <BiChevronsRight style={{fontSize:'30px',}}/>
         </button>
         </div>
         
