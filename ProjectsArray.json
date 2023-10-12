@@ -1,0 +1,18 @@
+[
+    {"project": "movieApp",
+    "link": "https://moviesblocks.netlify.app/",
+    "id": "1"
+  },
+  {"project": "weatherApp",
+    "link": "https://kingweather.netlify.app/",
+    "id": "2"
+  },
+  {"project": "weatherApp",
+    "link": "https://kingweather.netlify.app/",
+    "id": "3"
+  },
+  {"project": "Business",
+    "link": "https://webdev-pro.netlify.app/",
+    "id": "3"
+  }
+  ]

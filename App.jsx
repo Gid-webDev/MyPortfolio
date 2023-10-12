@@ -1,81 +1,76 @@
-import './App.css'
-import {ImLocation2} from 'react-icons/im';
-import NavContainer from './components/NavContainer';
-import {BsFillTelephoneInboundFill, BsWhatsapp} from 'react-icons/bs';
-import {FaReact, FaFigma, FaBootstrap, FaHtml5, FaCss3} from 'react-icons/fa'
-import {DiJavascript1} from 'react-icons/di';
-import {SiMui, SiRedux, SiTailwindcss} from 'react-icons/si';
-import SideRight from './SideRight';
-import Slides from './components/Slides';
-import ProfileDp from './components/ProfileDp';
-import { useEffect, useState } from 'react';
-import Welcome from './components/Welcome';
-import Projects from './components/Projects';
+import React, { useState } from 'react'
+import Overlay from './components/overlay'
+import {SlidesCard} from './components/SlidesCard';
+import { Iframe } from './components/SlidesCard';
+import {MdKeyboardBackspace, MdOpenWith} from 'react-icons/md';
+import {AiOutlineMenuUnfold, AiOutlineMenuFold} from 'react-icons/ai'
 
 
-function App() {
-  const [showDp, setShowDp] = useState(false);
-  const codesIMG = {"type":"codes.jpg"}
+
+const App = () => {
+  const [showOverlay, setShowOverlay] = useState(true);
+  const [picInfo, setPicInfo] = useState('');
+  const [showSideBar, setSideBar] = useState(false)
+  const [showNavBar, setNavBar] = useState(false)
 
   
+  
+const showOverlayStyle = showOverlay === true? ({ transition:'ease-in 0.6s'}) : 
+({ transform:'translateX(-105%)', position:'absolute', transition:'ease-out 0.6s',})
+  const overlayStyles = () => ({
+    ...showOverlayStyle, 
+  })
+  const navBarStyles = ({ 
+    zIndex:'0', top:'0px', backgroundColor:'rgba(0, 0, 0, 0.5)', width:'95%',
+     position:'absolute',backdropFilter:'blur(8px)', left:'40px'
+    })
+    const introDp = {height:'70px', top:'0px', position:'absolute',
+    overflow:'hidden', left:'0', cursor:'pointer' }
+  const iframeBox = showSideBar ===true? 
+  ({transform:'translateX(-25%)', height:'100%', transition:'0.8s'})  :
+   ({width:'100%', height:'100%',  transition:'0.8s'})
+   const navBarTriggerBtn = {
+    position:'absolute', zIndex:'0', left:'0%', top:'3px', 
+   cursor:'pointer', backgroundColor:'rgba(0, 0, 0, 0.6)'
+  }
 
-  const HeaderContainer = {
-    position:'relative', zIndex:'8', backgroundColor:'rgba(255, 255, 255, 0.5)', width:'100%', 
-    WebkitBackdropFilter:'blur(5px)', backdropFilter:'blur(7px)', top:'0' 
-}  
-  const MainStyle = {
-    backgroundColor:'', width:'100%', height:'100%', width:'100%', position:'relative', 
-    top:'50px', padding:'5px 0'
-  }
-  const RightStyle = {
-    backgroundColor:'', height:'100vh', overflowY:'hidden',
-    position:'relative', position:'relative',
-  }
-  const leftContainerStyle = {height:'100vh',}
-  const leftSideStyle = { 
-    position:'relative', width:'100%', height:'100%',backgroundSize:'cover', 
-    backgroundPosition:'center',  backgroundImage:`url(${codesIMG.type})`,
-    }
+  const handleSideBar = ()=> showSideBar? setSideBar(false, ) :
+   setSideBar(true)
   
 
-  useEffect(()=> {
-    
-  },[])
+  
 
   return (
     <>
-    <div>
-    {/* welcome page positioned absolute from welcome component */}
-    <Welcome/>
-   </div>
-
-    <div className='g-0  position-relative'>
-  
-    {/*header area */}
-    <section className='position-fixed' id='header' style={HeaderContainer}> 
-    <NavContainer setShowDp={setShowDp}/> 
-    <ProfileDp showDp={showDp}/>     
-    </section>
-
-    {/*main body section which is divided into two sub sections "Right and Left"*/}
-    <section onClick={()=> setShowDp(false)} className='row g-0 my-1' style={MainStyle}>
-    <div /* Left section*/  className='col-lg-8 col-md-7' style={leftContainerStyle}>
-     <div id='leftSide' style={leftSideStyle}>
-      <Slides/>
-       {/* Projects */}
-      <div style={{position:'relative', zIndex:'6', width:'100%'}}>
-        <div className='ProjectCards'>
-        <Projects/>
+      <section /* WELCOME PAGE */ style={overlayStyles()}>
+        <Overlay showOverlay={showOverlay} setShowOverlay={setShowOverlay}/>
+      </section>
+        
+      <section 
+        className='' style={{height:'100vh', }} onClick={()=> setNavBar(true)}>
+        <div style={iframeBox} onMouseLeave={()=> setNavBar(false)}>
+          <Iframe picInfo={picInfo}  />
         </div>
+        
+       {showNavBar&& /* NAV BAR FOR MAIN PAGE */
+        <div className='navbar d-flex px-4' style={navBarStyles}>
+        <button onClick={()=> setShowOverlay(true, setNavBar(false) , setSideBar(false))} className='btn fs-5 text-light'
+          style={{position:'', zIndex:'0', left:'0', top:'10px'}}> 
+          <MdKeyboardBackspace/> back 
+        </button>
+        <button /* SIDE BAR TRIGGER BUTTON */ className='btn fs-1 text-light ' 
+          style={{position:'', zIndex:'1', right:'10px', top:'10px'}} onClick={handleSideBar }>
+          {showSideBar?  <AiOutlineMenuUnfold/>  : <AiOutlineMenuFold/>}
+        </button>
       </div>
-     </div>
-     </div>
-     <div className='col-lg-4 col-md-5 text-light d-none d-md-block' style={RightStyle}>
-        <SideRight/>
-     </div>
-    </section> 
-    
-   </div>
+      }
+      <div /* CLICK TO SEE TO NAV BAR */  className=' fs-1 text-light px-2 py-3' 
+        onClick={()=> showNavBar ===true? setNavBar(false) : setNavBar(true)}
+        style={navBarTriggerBtn}  >
+         <MdOpenWith />
+      </div>
+        
+      </section>
     </>
   )
 }
