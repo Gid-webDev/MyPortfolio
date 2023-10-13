@@ -4,22 +4,32 @@ import Button from './Button';
 
 
 
-export function Iframe (picIndex) {
+
+export function Iframe ({sharePicInfo, setsharePicInfo}) {
+  const [projectLink, setProjectLink] = useState()
+  setsharePicInfo = ('')
+
+  useEffect(()=>{
+    console.log(sharePicInfo)
+  },[sharePicInfo])
+
    return(
     <div style={{width:'100vw', height:'100%', right:'10vw', }}>
-      <iframe src={picIndex? projectPics[2].link : 
-        projectPics[0].link} title='picture info' className='w-100 h-100' />
+      <iframe src={sharePicInfo? projectPics[sharePicInfo].link : ''}  
+      title='picture info' className='w-100 h-100' />
     </div>
    )
 }
 
 
-export function SlidesCard  ({parentWidth, setShowOverlay, })  {
+
+export function SlidesCard  ({parentWidth, setShowOverlay, sharePicInfo, setsharePicInfo})  {
+  
 
   const [ curr, setCurr] = useState(0);
   const [showBg, setShowBg] = useState(false)
   const [selectedPic, setSelectedPic] = useState(-1)
-  const [picInfo, setPicInfo] = useState(-1);
+  const [picInfo, setPicInfo] = useState(0);
   
 
   const ToPrev = () => {
@@ -67,7 +77,7 @@ const picDarkOverlayStyles = (picIndex) => ({
 
 
 useEffect(()=>{
- console.log(picInfo)
+
 },[picInfo])
 
   return (
@@ -75,17 +85,20 @@ useEffect(()=>{
     <div /* PHOTO SLIDE CONTAINER */ style={getcontainerStyles()} className=''>
       {projectPics.map((pic, picIndex) => <div key={picIndex} className=''
       style={getPicStyle(picIndex)} onMouseLeave={() => setSelectedPic(null)}
-       onMouseOver={()=> setSelectedPic(picIndex)} onLoad={()=> Iframe (picIndex)} > 
+       onMouseOver={()=> setSelectedPic(picIndex)}  > 
          {selectedPic === picIndex? (
         <div className='' style={picDarkOverlayStyles(picIndex)}>
          <Button text={'Xperience it'} 
-         onClick={()=>  setPicInfo(picIndex, setShowOverlay(false)) } /> </div>) 
+         onClick={()=> setShowOverlay(false, setsharePicInfo(picIndex))} /> </div>) 
          : ''}; 
       <h2 style={{position:'absolute', bottom:'-25px', color:'#bbb'}}>
       {pic.name} 
       </h2> 
+      <figure className='d-none'> <Iframe sharePicInfo={sharePicInfo} 
+      setsharePicInfo={setsharePicInfo}  />
+      </figure>
       </div>)} 
-      <iframe src={picInfo} title='picture info'/>
+      
     </div>
     </>
   )
