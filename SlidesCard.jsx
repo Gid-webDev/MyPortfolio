@@ -1,29 +1,13 @@
 import React, { Children, useCallback, useEffect, useRef, useState } from 'react';
 import { projectPics } from '../portfolioPic';
+import {BsCaretRightFill, BsCaretLeftFill} from 'react-icons/bs'
 import Button from './Button';
+import { Iframe } from './Iframe';
 
 
 
-
-export function Iframe ({sharePicInfo, setsharePicInfo}) {
-  const [projectLink, setProjectLink] = useState()
-  setsharePicInfo = ('')
-
-  useEffect(()=>{
-    console.log(sharePicInfo)
-  },[sharePicInfo])
-
-   return(
-    <div style={{width:'100vw', height:'100%', right:'10vw', }}>
-      <iframe src={sharePicInfo? projectPics[sharePicInfo].link : ''}  
-      title='picture info' className='w-100 h-100' />
-    </div>
-   )
-}
-
-
-
-export function SlidesCard  ({parentWidth, setShowOverlay, sharePicInfo, setsharePicInfo})  {
+export function SlidesCard  ({parentWidth, setShowOverlay, sharePicInfo, 
+  setsharePicInfo, setProfile})  {
   
 
   const [ curr, setCurr] = useState(0);
@@ -64,14 +48,18 @@ const getcontainerStyles = () => ({
   transform:`translateX(${-(curr * parentWidth)}px)`
 })
 
-const picStyle = { backgroundRepeat:'no-repeat', height:'100%', }
+const picStyle = { backgroundRepeat:'no-repeat', height:'100%',width:'100%', display:'flex' }
 const getPicStyle = (picIndex) => ({
-  ...picStyle, backgroundImage:`url(${projectPics[picIndex].image})`, 
-  width:`${parentWidth}px`, height:'100%', scale:'0.8', position:'relative', 
+  ...picStyle, backgroundImage:`url(${projectPics[picIndex].image})`,
+  minWidth:`${parentWidth}px`, height:'610px', scale:'0.75', position:'relative', 
 })
 const picDarkOverlayStyles = (picIndex) => ({
-  top:'0px', display:'flex', backgroundColor:'rgba(0, 0, 0, 0.7)', alignItems:'center', 
-  justifyContent:'center', height:'100%', width:'100%', position:'absolute'})
+  top:'0px', backgroundColor:'rgba(0, 0, 0, 0.85)', alignItems:'center', 
+   height:'100%', width: parentWidth, position:'absolute', display:'grid',
+   placeItems:'center'})
+   const slideBtn = {position:'absolute', top:'50%', color:'#fff', backdropFilter:'blur(8px)',
+   padding:'5px 10px', backgroundColor:'rgba(0, 0, 0, 0.6)', fontSize:'25px', cursor:'pointer',
+   borderRadius:'8px'}
 
 
 
@@ -85,21 +73,23 @@ useEffect(()=>{
     <div /* PHOTO SLIDE CONTAINER */ style={getcontainerStyles()} className=''>
       {projectPics.map((pic, picIndex) => <div key={picIndex} className=''
       style={getPicStyle(picIndex)} onMouseLeave={() => setSelectedPic(null)}
-       onMouseOver={()=> setSelectedPic(picIndex)}  > 
+       onMouseMove={()=> setSelectedPic(picIndex)}  > 
          {selectedPic === picIndex? (
         <div className='' style={picDarkOverlayStyles(picIndex)}>
-         <Button text={'Xperience it'} 
-         onClick={()=> setShowOverlay(false, setsharePicInfo(picIndex))} /> </div>) 
-         : ''}; 
-      <h2 style={{position:'absolute', bottom:'-25px', color:'#bbb'}}>
-      {pic.name} 
-      </h2> 
+         <Button text={<strong className='text-info fs-4'>X<span className='text-dark'>perience me</span></strong>} 
+         onClick={()=> setShowOverlay(false, setsharePicInfo(picIndex),  setProfile(false),)} /> </div>) 
+         : ''};  
       <figure className='d-none'> <Iframe sharePicInfo={sharePicInfo} 
       setsharePicInfo={setsharePicInfo}  />
       </figure>
       </div>)} 
-      
     </div>
+    <div className='' onClick={ToNext} style={{...slideBtn, left:'5%'}}> 
+          <BsCaretLeftFill/>
+        </div>
+        <div className='' onClick={ToPrev} style={{...slideBtn, right:'5%'}}> 
+          <BsCaretRightFill/> 
+        </div>
     </>
   )
 }
