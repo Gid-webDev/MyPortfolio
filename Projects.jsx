@@ -1,55 +1,32 @@
-import React, { useEffect, useState } from 'react'
-import ProjectCard from '../ProjectCard'
+import React, { useContext } from 'react';
+import { projectPics } from '../portfolioPic';
+import { DataContext } from '../Contexts/DataContext';
+import Card from './Card';
+import { useNavigate } from 'react-router-dom';
+
 
 const Projects = () => {
+    const Navigation = useNavigate()
+    const handleClick = () => Navigation('/')
+    const {setProject, textMode, selectedMode, ProfileAnimated} = useContext(DataContext)
 
-    const ProjectsArray = [
-        {"title": " React Movie app",
-        "link": "https://moviesblocks.netlify.app/",
-        "id": "1",
-        "sourceCode": "#"
-      },
-      {"title": "React Weather app",
-        "link": "https://kingweather.netlify.app/",
-        "id": "2",
-        "sourceCode": "#"
-      },
-      {"title": "Bootstrap CSS Web Templates",
-        "link": "https://webdev-pro.netlify.app/",
-        "id": "3",
-        "sourceCode": "#"
-      },
-      {"title": "Figma Ui/Ux AirBnB",
-        "link": "https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FiRmUh6jtMfzxvCRYGMfMa8%2FUntitled%3Fnode-id%3D212-1206%26starting-point-node-id%3D212%253A1206%26scaling%3Dscale-down%26mode%3Ddesign%26t%3Db0RFVTgoK3TBNJY3-1",
-        "id": "4",
-        "sourceCode": "#"
-      },
 
-      {"title": "Figma Ui/Ux cars Project",
-        "link": "https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FeLkPmY6eTRtKeQyqcRmvJD%2FSchool-Project--UI%252FUX%3Fnode-id%3D9-2%26starting-point-node-id%3D9%253A2%26scaling%3Dscale-down%26mode%3Ddesign%26t%3DYXxSCkewoRFEZgUr-1",
-        "id": "5",
-        "sourceCode": "#"
-      }
-      ]
-
-      const [project, setProject] = useState(ProjectsArray)
-      
-      useEffect(()=>{
-        console.log(project)
-      },[])
-
-      const Heading3 = {
-        backgroundColor:'', position:'relative', padding:'5px 25px',
-        color:'#bbb', textAlign:'center'
-    }
   return (
-    <>
-      <section className='g-0 row position-relative'> 
-      {ProjectsArray.map((project)=> (<div key={project.id} className='col-lg-6'> 
-          <ProjectCard project={project}/>
-        </div>))}
-      </section>
-    </>
+    <div className='row position-absolute' style={{top:'50px', }}>
+
+      <div /* HOME BUTTON */ className='position-fixed' style={{left:'90%', top:'5px'}}>
+         <button className='btn btn-outline-dark fs-4' onClick={handleClick}> Home</button>
+      </div> 
+      {// CARDS RENDERING SECTION
+        projectPics.map((project, projectId, selectedMode) => (
+            <div className='col-lg-6 col-xs px-3 my-0' key={projectId} onSelect={()=> setProject(project)} 
+             style={{scale:'', display:'flex', justifyContent:'center'}}>
+              <Card project={project} projectId={projectId}/> 
+            </div>
+            
+          ))}
+      
+    </div>
   )
 }
 
