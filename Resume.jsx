@@ -5,6 +5,19 @@ import { ResumeNavBar } from '../STYLED.CONTAINER/Resume.styled'
 import {useNavigate} from 'react-router-dom'
 
 
+
+
+export const CV_Btn = () => {
+  const Navigation = useNavigate();
+return (
+      <div>
+       <button className='btn btn-outline-dark mx-2' onClick={()=> Navigation("/Resume")}> View Resume</button> 
+       <button className='btn btn-outline-dark mx-2' onClick={() => alert('Download is disable')}> Download Resume </button>
+      </div>
+    )
+}
+
+
 const Resume = () => {
   const Navigation = useNavigate();
   const handleClick = () => Navigation('/')
@@ -13,7 +26,6 @@ const Resume = () => {
     <>
     <ResumeNavBar>
        <button onClick={handleClick}> Home</button> 
-       <button onClick={() => alert('Download is disable')}> Download Resume </button>
     </ResumeNavBar>
       <ResumeContainer>
       
@@ -87,3 +99,4 @@ const Resume = () => {
 }
 
 export default Resume
+

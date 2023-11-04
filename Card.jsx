@@ -7,7 +7,7 @@ import { DataContext } from '../Contexts/DataContext';
 const Card = ({project, textMode, selectedMode, picIndex, setPicIndex, projectId, setIframe}) => {
   const Navigation = useNavigate()
   const {setProfile} = useContext(ProfileContext);
-  const { picInfo, setNavBarOn} = useContext(DataContext)
+  const { picInfo, setNavBarOn, setModal} = useContext(DataContext)
 
   const [cardHover, setCardHover] = useState(false);
   const [btnOption, setBtnOption] = useState(false);
@@ -28,8 +28,8 @@ const Card = ({project, textMode, selectedMode, picIndex, setPicIndex, projectId
     <>
 
     <div className="card rounded-4 m-4 my-5"  style={{...cardStyles, transition:'0.5s', backgroundColor: selectedMode, color: textMode, }}
-    onMouseEnter={()=> setHover(true)} onMouseLeave={()=> setHover(false)}>
-    <div className="row">
+    onMouseEnter={()=> setHover(true)} onMouseLeave={()=> setHover(false)} onClick={()=>  setModal(false)}>
+    <div className="row" onClick={()=>  setModal(false)}>
       <div className="col-lg-7 col-sm-8 ">
         <img src={project.poster} className="img-fluid rounded-4" alt="..."/>
       </div>

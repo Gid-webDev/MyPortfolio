@@ -8,16 +8,18 @@ import Profile from './Profile'
 import { Link, Router } from 'react-router-dom'
 import { Iframe } from './Iframe'
 import { ProfileContext } from '../Contexts/ProfileContext'
+import { DataContext } from '../Contexts/DataContext'
 
 
 
 
-const Overlay = ({setIframe, BGcolor, setShowOverlay, picIndex, setPicIndex, setMode, mode, selectedMode, modeName, textMode }) => {
+const Overlay = ({setIframe, setShowOverlay, picIndex, setPicIndex, mode, selectedMode, modeName}) => {
 
     const [showTips, setTips] = useState(false)
     const [showflag, setflag] = useState(false)
     
-    const {setProfile, showProfile} = useContext(ProfileContext);
+    const {setProfile, showProfile,} = useContext(ProfileContext);
+    const {setModal} = useContext(DataContext)
     
     
  
@@ -63,7 +65,7 @@ const Overlay = ({setIframe, BGcolor, setShowOverlay, picIndex, setPicIndex, set
   return (
     <> 
      <ProfileContext.Provider value={{showProfile, setProfile, modeName}}>
-       <div id='overlayContainer'  className=''>
+       <div id='overlayContainer'  className='' onClick={()=>  setModal(false)}>
           <div className='' style={containerForPhotoSlides}>
             <section /* PHOTO SLIDES */ style={photoSlides}> 
               <div style={{}}>

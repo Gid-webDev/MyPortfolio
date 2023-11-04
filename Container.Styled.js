@@ -47,7 +47,6 @@ rotate: -10deg;
 transition: 0.6s;
  &:hover{
     rotate: 0deg;
-    scale: 0.85;
     transition: 0.6s;
  }
 @media(max-width: 790px) {

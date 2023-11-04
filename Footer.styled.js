@@ -112,7 +112,7 @@ export const Links = styled.a`
     font-size: 28px;
     text-decoration: none;
     color: #111;
-    transition: 0.5s;
+    transition: 0.6s;
     &:hover{
         transform: translateY(-10px);
         color: #111;
