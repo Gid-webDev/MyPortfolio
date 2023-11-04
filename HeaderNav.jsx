@@ -9,7 +9,7 @@ const HeaderNav = () => {
   const Navigation = useNavigate()
   const {setProfile, showProfile, setDropMenu, dropMenu} = useContext(ProfileContext);
 
-    const {profileLabel, setProfileLabel, textMode, modeName,
+    const {profileLabel, setProfileLabel, textMode, modeName, setModal,
        mode, setMode, triggerProfile} = useContext(DataContext);
     
     const LogoDp = {height:'55px', width:'55px', borderRadius:'50%',
@@ -33,7 +33,7 @@ const HeaderNav = () => {
   return (
     <>
 
-    <div className='px-4 py-2 position-fixed' style={LogoStyles}>
+    <div className='px-4 py-2 position-fixed' style={LogoStyles} onClick={()=>  setModal(false)}>
         <div>
           <img src='gid.jpg' alt='intro-Dp'className='img-fluid'style={LogoDp}
           onClick={()=> showProfile? setProfile(false) : setProfile(true)} 

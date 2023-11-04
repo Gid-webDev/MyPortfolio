@@ -6,6 +6,11 @@ export const menuStyled = styled.div`
  box-shadow: 0 0 1px 0 ${({textColor}) => textColor};
  padding: 40px 0;
  width: 270px;
+ border-radius: 8px;
+
+ @media(max-width: 400px){
+    height: 80vh;
+ }
  li{
     padding: 10px 0;
     list-style: none;

@@ -3,10 +3,10 @@ import { CardHeaderStyles } from '../STYLED.CONTAINER/CardHeaderStyles';
 import { DataContext } from '../Contexts/DataContext';
 
 const CardHeader = () => {
-    const {selectedMode, BGcolor, textMode} = useContext(DataContext)
+    const {setModal, textMode} = useContext(DataContext)
   return (
     <> 
-         <CardHeaderStyles color={textMode}> 
+         <CardHeaderStyles color={textMode} onClick={()=>  setModal(false)}> 
            <portfolio>portfolio</portfolio> 
            <br/>
            Featured works 

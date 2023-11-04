@@ -4,10 +4,10 @@ import { DataContext } from '../Contexts/DataContext'
 
 
 const Biography = () => {
-  const {textMode, selectedMode,  BGcolor} = useContext(DataContext);
+  const {setModal, selectedMode,  BGcolor} = useContext(DataContext);
   return (
     <>
-    <BiographyStyles.Container bg={BGcolor} textColor={selectedMode}>
+    <BiographyStyles.Container bg={BGcolor} textColor={selectedMode} onClick={()=>  setModal(false)}>
       <h1> My journey as a software Developer</h1>
       <BiographyStyles.Flex>
       <div className='ui bottom pointing label fs-4 text-light bg-white-50 rounded-4 z-1'>
