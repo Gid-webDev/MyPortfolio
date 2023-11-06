@@ -37,7 +37,7 @@ width: 100%;
 `
 
 export const ImageStyles = styled.img`
-top: -75px;
+top: -40px;
 width: 405px;
 position: relative;
 z-index: 0;

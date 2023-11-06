@@ -3,6 +3,7 @@ import { ResumeContainer } from '../STYLED.CONTAINER/Resume.styled'
 import { Education, workXperience} from '../Resume.Data'
 import { ResumeNavBar } from '../STYLED.CONTAINER/Resume.styled'
 import {useNavigate} from 'react-router-dom'
+import { BsHouse } from 'react-icons/bs'
 
 
 
@@ -11,11 +12,12 @@ export const CV_Btn = () => {
   const Navigation = useNavigate();
 return (
       <div>
-       <button className='btn btn-outline-dark mx-2' onClick={()=> Navigation("/Resume")}> View Resume</button> 
-       <button className='btn btn-outline-dark mx-2' onClick={() => alert('Download is disable')}> Download Resume </button>
+       <button className='btn btn-dark mx-2 my-3' onClick={() => Navigation("/Resume")} > 
+          Click to get Resume 
+       </button>
       </div>
     )
-}
+};
 
 
 const Resume = () => {
@@ -24,11 +26,20 @@ const Resume = () => {
   
   return (
     <>
-    <ResumeNavBar>
-       <button onClick={handleClick}> Home</button> 
+   
+<div style={{display:'flex', justifyContent: 'center', backgroundColor:'#202020', padding:'40px 0'}}>
+ <ResumeNavBar>
+       <strong className='fs-3 position-fixed text-light px-2 py-1' onClick={handleClick}
+        style={{right:'30px', cursor:'pointer', zIndex:'11'}}>
+        <BsHouse/> </strong> 
     </ResumeNavBar>
-      <ResumeContainer>
-      
+ <iframe src="https://drive.google.com/file/d/1o3APWd1xyuNUAt4LRYWLzilArnSWo4nM/preview" style={{width:'90vw', height:'100vh', allow:'autoplay', left:'10%'}}>
+    </iframe>
+</div>
+    
+
+      <ResumeContainer /* HIDDEN CV WAS REPLACE WITH PDF FORMART RENDERED WITH IFRAME */ 
+      className='d-none'>
        <section> 
          <img src='gid.jpg' alt="Gideon's picture"/>
          <h3>Contact</h3> 

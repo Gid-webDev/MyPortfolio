@@ -1,18 +1,17 @@
 import React, {useContext, useState } from 'react';
 import {AiOutlineMenuUnfold, AiOutlineMenuFold} from 'react-icons/ai';
 import {MdKeyboardBackspace,} from 'react-icons/md';
-import {BsArrowsExpand, BsArrowsCollapse} from 'react-icons/bs'
+import {BsArrowsCollapse} from 'react-icons/bs'
 import { DataContext } from '../Contexts/DataContext';
 
 
 const NavBar = () => {
 
-    const {viewProjectDetails, setViewProjectDetails, setIframe,
-       setPicIndex, setProfile, navBarOn, setNavBarOn, showProfile, textMode} = useContext(DataContext)
+    const {viewProjectDetails, setViewProjectDetails, setIframe, showIframe,
+    setPicIndex, setProfile, navBarOn, setNavBarOn, showProfile, textMode} = useContext(DataContext)
 
     const [showSideBar, setSideBar] = useState(false);
     const [showNavBar, setNavBar] = useState(true);
-    const [mode, setMode] = useState(true);
     const [toggleLabel, setToggleLabel] = useState(false);
     const [toggleNav, setToggleNav] = useState(false);
     const [goBack, setGoback] = useState(false);
@@ -30,13 +29,21 @@ const NavBar = () => {
    const navBarStyles = showNavBar? {zIndex:'0', top:'0px',
    height:'170px' ,position:'relative', left:'0px', display:'grid',
   transition:'0.9s', }  :  { height:'170px', transform:'translateY(-400px)',
-  transition:'ease-out 0.9s', display:'grid',}
+  transition:'ease-out 0.9s', display:'grid',
+}
+  const handleShowProfile = () => showProfile? setProfile(false, setNavBarOn(true))
+   : setProfile(true, setNavBarOn(false))
+  const handleGo_back = ()=> setIframe(false, setViewProjectDetails(false), setNavBar(false), setPicIndex(-1));
+  const handleNavSize = ()=> showNavBar===true? setNavBar(false, setToggleNav(false), setBarHeight(false))
+   : setNavBar(true, setToggleNav(false), setBarHeight(true));
+  const expandLabelStyles = {position:'absolute', top:'80px', width:'180px', padding:'8px 0', left:'45px'}
+  const navBarHeight = barHeight? '300px' : '140px';
 
-  const navBarHeight = barHeight? '300px' : '140px'
+
   return (
     <>
 
-    {navBarOn && <div /* NAV_BAR BUTTON'S CONTAINER  */
+    { <div /* NAV_BAR BUTTON'S CONTAINER  */
     className='navBar position-fixed  rounded-2' 
      style={{top:'90px', left:'5px', width:'58px', backdropFilter:'blur(10px)',
      WebkitBackdropFilter:'blur(10px)', backgroundColor: 'rgba(0, 0, 0, 0.5)',
@@ -46,21 +53,21 @@ const NavBar = () => {
      
      <button className='btn fs-2 text-light py-2' style={navBarBtnStyles}>
      <img src='gid.jpg' alt='gid.png' className='img-fluid rounded-circle ' 
-      style={{width:'40px', height:'40px'}} onClick={() => showProfile? setProfile(false, setNavBarOn(true)) : setProfile(true, setNavBarOn(false))}/>
+      style={{width:'40px', height:'40px'}} onClick={handleShowProfile}/>
       
      
-     <BsArrowsCollapse className='my-5' onClick={()=> showNavBar===true? setNavBar(false, setToggleNav(false), setBarHeight(false)) : setNavBar(true, setToggleNav(false), setBarHeight(true))}
+     <BsArrowsCollapse className='my-5' onClick={handleNavSize}
      onMouseOver={()=> setToggleNav(true)} onMouseLeave={()=> setToggleNav(false)}/>
    </button>
    {toggleNav&& 
-    <div className="ui left pointing label" style={{position:'absolute', top:'80px', width:'180px', padding:'8px 0', left:'45px'}}>
+    <div className="ui left pointing label" style={expandLabelStyles}>
       Expand or Collapse
     </div>}
     </div>
 
     <div className='navbar fs-1 rounded btn' style={navBarStyles}>
      <button /* GO BACK BTN */
-        onClick={()=> setIframe(false, setViewProjectDetails(false), setNavBar(false), setPicIndex(-1))} 
+        onClick={handleGo_back} 
         className='btn text-light fs-2' onMouseEnter={()=> setGoback(true)} 
         onMouseLeave={()=> setGoback(false)} style={navBarBtnStyles}> 
          <MdKeyboardBackspace/>  

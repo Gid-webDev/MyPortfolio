@@ -65,7 +65,7 @@ const Overlay = ({setIframe, setShowOverlay, picIndex, setPicIndex, mode, select
   return (
     <> 
      <ProfileContext.Provider value={{showProfile, setProfile, modeName}}>
-       <div id='overlayContainer'  className='' onClick={()=>  setModal(false)}>
+       <div id='overlayContainer'  className='' onClick={()=>  setModal(false, setProfile(false))}>
           <div className='' style={containerForPhotoSlides}>
             <section /* PHOTO SLIDES */ style={photoSlides}> 
               <div style={{}}>

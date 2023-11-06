@@ -6,14 +6,13 @@ import {MdKeyboardBackspace,} from 'react-icons/md';
 import {BsArrowsExpand, BsArrowsCollapse} from 'react-icons/bs'
 import {useNavigate } from 'react-router-dom';
 import { ProfileContext } from '../Contexts/ProfileContext';
-import { SlidesContext } from '../Contexts/SlidesContext';
 import { DataContext } from '../Contexts/DataContext';
 import NavBar from './NavBar';
 
 
 
 export function Iframe () {
-  const {picIndex, setIframe, setPicIndex, setViewProjectDetails, viewProjectDetails} = useContext(DataContext);
+  const {picIndex, setIframe, showIframe, setPicIndex, setViewProjectDetails, viewProjectDetails} = useContext(DataContext);
   const {setProfile,} = useContext(ProfileContext);
   
 
@@ -37,21 +36,9 @@ export function Iframe () {
       <>
 
       <div style={{width:'100%', height:'100vh', right:'0', }}>
-      { (<iframe src={projectPics[picIndex]? projectPics[picIndex].link : ''} title='picture info' className='w-100 h-100' />) }
-      <section className='text-dark d-none' 
-       style={{position:'absolute', top:'0', right:'-35%', width:'33%', height:'100%'}}>
-       {picIndex? 
-         <div>
-           <h3> {projectPics[picIndex]? projectPics[picIndex].name : ''} </h3>
-         </div>
-        : ''}
-      </section>      
-           <section /* IFRAME PROJECT DETAILS  */ className='py-2' 
-            style={{top:'0', position:'absolute', right:'0', width:'34%', height:'100vh', zIndex:'-1',
-              display:'grid', placeItems:'center', backgroundColor:'', overflowY:'auto'}}> 
-              <ProjectDetails picIndex={picIndex}/>
-           </section>
-    </div> 
+
+      { (<iframe src={projectPics[picIndex]? projectPics[picIndex].link : ''} title='picture info' className='w-100 h-100' />) }     
+     </div> 
       </>
      )
   }

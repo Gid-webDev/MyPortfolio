@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect, useRef, useState, useContext } from 'react'
-import {AiOutlineClose} from 'react-icons/ai'
 import { ProfileContext } from '../Contexts/ProfileContext'
 import { DataContext } from '../Contexts/DataContext'
 import { BiToggleLeft, BiToggleRight } from 'react-icons/bi'
+import { MdOutlineDarkMode, MdOutlineLightMode } from 'react-icons/md'
 
 
 
@@ -83,6 +83,10 @@ const Profile = () => {
      id: 14,
       Icon: '.png'
     },
+    {name: 'Express JS',
+     id: 15,
+      Icon: '.png'
+    },
 ]
     const SkillsStyle = (skill) => ({
         listStyle:'none', textAlign:'start', margin:'20px 0',
@@ -108,8 +112,8 @@ const Profile = () => {
              </span>
              <span className='px-3 position-absolute' style={{color: textMode, right:'-20px',}} > 
                {modeName} {mode ===true? 
-                 <BiToggleRight className='fs-1' onClick={()=> setMode(false)} style={{cursor:'pointer', color: textMode}}/>  : 
-                 <BiToggleLeft className='fs-1' onClick={()=> setMode(true)} style={{cursor:'pointer',  color: textMode}}/>
+                 <MdOutlineLightMode className='fs-3' onClick={()=> setMode(false)} style={{cursor:'pointer', color: textMode}}/>  : 
+                 <MdOutlineDarkMode className='fs-3' onClick={()=> setMode(true)} style={{cursor:'pointer',  color: textMode}}/>
                }
             </span>
             </div>

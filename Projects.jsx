@@ -12,19 +12,13 @@ const Projects = () => {
 
 
   return (
-    <div className='row position-absolute' style={{top:'50px', }}>
+    <div className='row position-absolute' style={{top:'0px', }}>
 
-      <div /* HOME BUTTON */ className='position-fixed' style={{left:'90%', top:'5px'}}>
-         <button className='btn btn-outline-dark fs-4' onClick={handleClick}> Home</button>
+      <div /* HOME BUTTON */ className='position-absolute' style={{left:'88%', top:'35px', zIndex:'1000'}}>
+         <button className='btn btn-outline-light fs-4 z-1' onClick={handleClick}> Home</button>
       </div> 
-      {// CARDS RENDERING SECTION
-        projectPics.map((project, projectId, selectedMode) => (
-            <div className='col-lg-6 col-xs px-3 my-0' key={projectId} onSelect={()=> setProject(project)} 
-             style={{scale:'', display:'flex', justifyContent:'center'}}>
-              <Card project={project} projectId={projectId}/> 
-            </div>
-            
-          ))}
+      <iframe src="https://drive.google.com/file/d/1o3APWd1xyuNUAt4LRYWLzilArnSWo4nM/preview" style={{width:'100vw', height:'100vh', allow:'autoplay', zIndex:'0'}}>
+      </iframe>
       
     </div>
   )

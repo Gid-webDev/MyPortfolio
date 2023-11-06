@@ -16,15 +16,15 @@ export const CardHeaderStyles = styled.h6`
  };
  @media(max-width: 400px) {
    font-weight: ;
-   font-size: 44px;
+   font-size: 50px;
    padding: 5px 10px;
 };
 
  };
  portfolio{
-    font-size: 25px;
+    font-size: 20px;
     position: absolute;
-    font-weight: 500;
+    font-weight: 100;
     top: 75px;
     @media(max-width: 768px) {
       font-weight: ;
