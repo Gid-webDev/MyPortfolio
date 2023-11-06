@@ -15,7 +15,7 @@ background-color: #111;
  };
  @media(max-width: 576px) {
     padding: 20px;
-    background-color: ${({bg})=> bg};
+    background-color: #111;
  };
  @media(max-width: 400px) {
     padding: 8px;
@@ -58,7 +58,7 @@ invite{
 
 linkContainer{
     width: 100%;
-    padding: 10px 15px;
+    padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -68,7 +68,7 @@ linkContainer{
 
      @media(max-width: 576px) {
         flex-direction: column;
-        background-color: ${({linksColor})=> linksColor};
+        background-color: ;
         color: ${({textcolor}) => textcolor};
      };
 };
@@ -109,7 +109,7 @@ column{
 `
 export const Links = styled.a`
     padding: 10px 30px;
-    font-size: 28px;
+    font-size: 30px;
     text-decoration: none;
     color: #111;
     transition: 0.6s;
@@ -121,15 +121,15 @@ export const Links = styled.a`
     @media(max-width: 992px) {
         font-size: 25px;
         padding: 10px 0;
-        margin-right: 25px;
+        margin-right: 35px;
     };
      @media(max-width: 576px) {
             font-size: 25px;
             margin-top: 10px;
-            color: ${({textcolor}) => textcolor};
+            margin-right: 25px;
+            color: ;
             &:hover{
                 transform: translateY(-10px);
-                color: ${({textcolor}) => textcolor};
             }
         };
         

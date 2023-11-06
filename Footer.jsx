@@ -5,17 +5,19 @@ import { Flex } from '../STYLED.CONTAINER/Container.Styled'
 import { Links } from '../STYLED.CONTAINER/Footer.styled'
 import { useNavigate } from 'react-router-dom'
 import {socialLinks} from '../LinksData'
+import { ProfileContext } from '../Contexts/ProfileContext'
 
 const Footer = () => {
     const Navigation = useNavigate()
     const {selectedMode,  BGcolor, mode, setModal} = useContext(DataContext)
+    const {setProfile, showProfile} = useContext(ProfileContext)
    
 
    
 
 
   return (
-    <FooterStyles.FooterContainer bg={BGcolor} linksColor={selectedMode} textcolor={BGcolor} onClick={()=>  setModal(false)}>
+    <FooterStyles.FooterContainer bg={BGcolor} linksColor={selectedMode} textcolor={BGcolor} onClick={()=>  setModal(false, setProfile(false))}>
       <Flex>
         <h2> LET'S GET IN TOUCH </h2>
         <p>

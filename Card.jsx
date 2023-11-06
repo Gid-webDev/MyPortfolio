@@ -14,7 +14,7 @@ const Card = ({project, textMode, selectedMode, picIndex, setPicIndex, projectId
   const [hover, setHover] = useState(false)
   const hoverColor = hover ===true? textMode : 'blue';
 
-  const cardStyles = hover ===true? { scale:'0.95', border:'none', } : { scale:'0.98', border:'none',}
+  const cardStyles = hover ===true? { scale:'0.95', border:'none', } : { scale:'', border:'none',}
 
  
 
@@ -29,7 +29,7 @@ const Card = ({project, textMode, selectedMode, picIndex, setPicIndex, projectId
 
     <div className="card rounded-4 m-4 my-5"  style={{...cardStyles, transition:'0.5s', backgroundColor: selectedMode, color: textMode, }}
     onMouseEnter={()=> setHover(true)} onMouseLeave={()=> setHover(false)} onClick={()=>  setModal(false)}>
-    <div className="row" onClick={()=>  setModal(false)}>
+    <div className="row" onClick={()=>  setModal(false, setProfile(false))}>
       <div className="col-lg-7 col-sm-8 ">
         <img src={project.poster} className="img-fluid rounded-4" alt="..."/>
       </div>
@@ -45,22 +45,22 @@ const Card = ({project, textMode, selectedMode, picIndex, setPicIndex, projectId
           </button>
            { // DROPDOWN  BUTTON FOR PROJECT's BUTTON
             btnOption&& 
-            <ul  className='position-absolute rounded-4 py-2'
+            <div  className='position-absolute rounded-4 py-2 '
            style={{minWidth:'200px', justifyContent:'center', alignItems:'center', listStyle:'none',
             boxShadow: `0px 0px 3px 0px ${textMode}`, width:'', bottom:'45px',
-             backgroundColor: selectedMode,}}  onMouseLeave={()=> setBtnOption(false)}>
+             backgroundColor: selectedMode, display:'flex', flexDirection:'column'}}  onMouseLeave={()=> setBtnOption(false)}>
               
-            <li /* BOTTON => OPEN PROJECT WITHIN APP */
-             onClick={()=> setPicIndex(projectId, setIframe(true), setProfile(true, setNavBarOn(false)))} 
-              className='fs-5 py-3 d-flex' style={{color:textMode, lineHeight:'0.1', cursor:'pointer'}}>
+            <div /* BOTTON => OPEN PROJECT WITHIN APP */
+             onClick={()=> setPicIndex(projectId, setIframe(true), setProfile(true, setNavBarOn(true)))} 
+              className='fs-5 py-3 my-2 d-flex text-center' style={{color:textMode, lineHeight:'0.1', cursor:'pointer'}}>
                View project 
-              </li>
-               <li> <hr style={{color: textMode, width:'100%'}} /> </li>
-              <li /* BUTTON => OPEN PROJECT IN A NEW TAB */ className='py-3 fs-5' 
+              </div>
+                <hr style={{color: textMode, width:'100%', position:'absolute'}} /> 
+              <div /* BUTTON => OPEN PROJECT IN A NEW TAB */ className='py-3 px-4 fs-5 my-2' 
               style={{color: textMode, lineHeight:'0.1', }} onMouseOver={()=> setHover(true) }>
                 <a href={project.link} target='_blank' style={{color:textMode}} > Open in new tab</a>
-              </li>
-           </ul>}
+              </div>
+           </div>}
         </div>
       </div>
     </div>

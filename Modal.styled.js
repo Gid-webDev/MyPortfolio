@@ -9,9 +9,12 @@ right: 25%;
 top: 20%;
 border-radius: 10px;
 box-shadow: 0 0 3px 0;
-background-color: #bbb;
+background-color: #f9f9f9;
 z-index: 11;
-padding: 15px;
+padding: 0px 20px;
+hr{
+    
+}
 
 @media(max-width: 768px){
     width: 90vw;
@@ -21,18 +24,23 @@ padding: 15px;
 `;
 
 export const ModalHeader = styled.h3`
+ position: relative;
+ top: 8px;
 `;
 
 export const ModalBody = styled.div`
 text-align: center;
 `;
 
-export const ModalFooter = styled.div`
+export const ModalFooter = styled.strong`
 border: none;
+position: relative;
 background-color: inherit;
-text-align: end;
+right: -88%;
+bottom: 8px;
+border-radius: 5px;
 font-weight: bold;
-font-size: 16px;
+font-size: 17px;
 cursor: pointer;
     &:hover{
         color: red;

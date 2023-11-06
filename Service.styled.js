@@ -4,6 +4,7 @@ export const serviceContainer = styled.section`
 width: 100%;
 display: flex;
 gap: 40px;
+position: relative;
 background-color: ${({bg})=> bg};
 color: ${({textColor})=> textColor};
 align-items: center;
@@ -13,13 +14,10 @@ padding: 0 60px;
     padding: 0 20px;
 }
 span{
-    font-size: 15px;
+    font-size: 13px;
     font-weight: 100;
 };
-strong{
-    font-size: 20px;
-    font-weight: 100;
-};
+
 h6{
     font-size: 65px;
     font-weight: 800;
@@ -28,17 +26,19 @@ h6{
     };
 };
 li{
+    position: relative;
     display: flex;
     list-style: none;
     font-size: 30px;
     font-weight: 700;
+    left: -15px;
     @media(max-width: 576px){
         font-size: 30px;
-        font-weight: 600;
+        font-weight: 500;
     };
     @media(max-width: 400px){
         font-size: 25px;
-        font-weight: 800;
+        font-weight: 500;
     }
     
 };
