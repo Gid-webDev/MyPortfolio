@@ -10,8 +10,11 @@ color: ${({textColor})=> textColor};
 align-items: center;
 justify-content: space-around;
 padding: 0 60px;
-@media(max-width: 400px){
+border-radius: 0 0px 0 200px;
+
+@media(max-width:576px){
     padding: 0 20px;
+    border-radius: 0 0 0 100px;
 }
 span{
     font-size: 13px;

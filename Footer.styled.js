@@ -9,15 +9,18 @@ flex-direction: column;
 justify-content: center;
 align-items: center;
 background-color: #111;
+border-radius: 0 150px 0 0;
 
 @media(max-width: 992px) {
     padding: 40px;
  };
- @media(max-width: 576px) {
+ @media(max-width: 776px) {
     padding: 20px;
     background-color: #111;
+    border-radius: 0px 100px 0px 0;
  };
  @media(max-width: 400px) {
+    border-radius: 0px 0px 0px 0;
     padding: 8px;
  };
 
