@@ -77,16 +77,20 @@ const Profile = () => {
     },
     {name: 'Context Api',
      id: 13,
-      Icon: '.png'
+      Icon: ''
     },
     {name: 'Styled Component',
      id: 14,
-      Icon: '.png'
+      Icon: ''
     },
     {name: 'Express JS',
      id: 15,
-      Icon: '.png'
+      Icon: ''
     },
+    {name: 'Framer-Motion',
+    id: 16,
+     Icon: ''
+   },
 ]
     const SkillsStyle = (skill) => ({
         listStyle:'none', textAlign:'start', margin:'20px 0',

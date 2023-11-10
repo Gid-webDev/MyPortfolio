@@ -4,17 +4,26 @@ export const Container = styled.div`
   background-color: ${({bg}) => (bg)};
   color: ${({textColor}) => textColor};
   padding: 0 30px;
+  border-radius: 0 150px 0px 0;
+
+  @media(max-width: 576px) {
+   border-radius: 0 100px 0px 0;
+   font-size: 55px;
+   font-weight: 800;
+}
 
   h1{
-    font-size: 80px;
+    padding-top: 30px;
+    font-size: 76px;
     z-index: 2;
 
    @media(max-width: 576px) {
-       font-size: 55px;
+       padding-top: 25px;
+       font-size: 50px;
        font-weight: 800;
   }
   @media(max-width: 400px) {
-    padding: 0px;
+   
     font-size: 40px;
     font-weight: 800;
  }
@@ -37,7 +46,7 @@ width: 100%;
 `
 
 export const ImageStyles = styled.img`
-top: -40px;
+top: -35px;
 width: 405px;
 position: relative;
 z-index: 0;

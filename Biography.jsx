@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import * as BiographyStyles from '../STYLED.CONTAINER/Container.Styled'
 import { ProfileContext } from '../Contexts/ProfileContext'
 import { DataContext } from '../Contexts/DataContext'
+import {motion, useInView, useAnimation} from 'framer-motion';
 
 
 const Biography = () => {
@@ -10,9 +11,27 @@ const Biography = () => {
   return (
     <>
     <BiographyStyles.Container bg={BGcolor} textColor={selectedMode} onClick={()=>  setModal(false, setProfile(false))}>
-      <h1> My journey as a software Developer</h1>
+      <motion.h1
+      variants={{
+        hidden:{opacity: 0, y: 100},
+        visible:{opacity: 1, y: 0}
+      }}
+      initial="hidden"
+      whileInView="visible" 
+      transition={{duration: 0.8, delay: 0.25}}
+      > 
+       My journey as a software Developer
+      </motion.h1>
       <BiographyStyles.Flex>
-      <div className='ui bottom pointing label fs-4 text-light bg-white-50 rounded-4 z-1'>
+      <motion.div className='ui bottom pointing label fs-4 text-light bg-white-50 rounded-4 z-1'
+       variants={{
+         hidden:{opacity: 1, y: 75},
+         visible:{opacity: 1, y:0}
+       }}
+       initial="hidden"
+       whileInView="visible" 
+       transition={{duration: 0.5, delay: 0.25}}
+      >
        <BiographyStyles.Text textColor={selectedMode} > 
         Honestly my journey as a frontEnd developer has been that of determination 
         amidst all level of faustration and focus on the goal even when the goal 
@@ -23,7 +42,7 @@ const Biography = () => {
         I look forward to working & learning from you. <br/>
         cheers!
         </BiographyStyles.Text>
-      </div>
+      </motion.div>
        
 
         <BiographyStyles.ImageStyles src='gid.jpg' alt=''/>

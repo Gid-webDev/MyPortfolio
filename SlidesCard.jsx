@@ -14,7 +14,7 @@ import { SlidesContext } from '../Contexts/SlidesContext';
 export function SlidesCard  ({parentWidth, })  {
   
 
-  const { setPicIndex, setIframe, picInfo, setPicInfo, setNavBarOn} = useContext(DataContext);
+  const { setPicIndex, setIframe, picInfo, setPicInfo, setNavBarOn, } = useContext(DataContext);
   const {setProfile} = useContext(ProfileContext);
 
   const Navigation = useNavigate()
@@ -71,8 +71,8 @@ const picDarkOverlayStyles = (picIndex) => ({
    borderRadius:'8px'}
 
 useEffect(()=> {
-  
-},[picInfo])
+  console.log()
+})
 
   return (
     <>
